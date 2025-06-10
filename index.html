@@ -362,11 +362,14 @@
     if (shaCache) {
       body.sha = shaCache;
     }
-    const response = await githubApiRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`), {
-      method: 'PUT',
-      body: JSON.stringify(body),
-      headers: {'Content-Type': 'application/json'}
-    });
+    const response = await githubApiRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,
+  {
+    method: 'PUT',
+    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'application/json' }
+  }
+);
+
     shaCache = response.content.sha;
   }
 
