@@ -334,7 +334,7 @@
   async function fetchExpenses() {
     const path = getExpensesFilePath().substring(1); // Remove leading slash for API
     try {
-      const fileData = await githubApiRequest(\`/repos/\${REPO_OWNER}/\${REPO_NAME}/contents/\${path}\`);
+      const fileData = await githubApiRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`);
       shaCache = fileData.sha;
       const decodedContent = atob(fileData.content);
       expenses = JSON.parse(decodedContent);
@@ -362,7 +362,7 @@
     if (shaCache) {
       body.sha = shaCache;
     }
-    const response = await githubApiRequest(\`/repos/\${REPO_OWNER}/\${REPO_NAME}/contents/\${path}\`, {
+    const response = await githubApiRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`), {
       method: 'PUT',
       body: JSON.stringify(body),
       headers: {'Content-Type': 'application/json'}
