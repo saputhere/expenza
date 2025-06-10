@@ -327,7 +327,7 @@
   // Calculate the path for user's expenses file
   function getExpensesFilePath() {
     // Store expenses per user inside data/{username}-expenses.json
-    return \`/\${DATA_FOLDER}/\${userLogin}-expenses.json\`;
+    return `/${DATA_FOLDER}/${userLogin}-expenses.json`;
   }
 
   // Fetch user's expenses file contents & SHA (for update)
